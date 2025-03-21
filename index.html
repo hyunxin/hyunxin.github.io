@@ -1,0 +1,747 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>韩小鱼的仓库</title>
+    <meta name="author" content="Faisal Ahmed" />
+    <meta name="referrer" content="never">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+    <link rel="icon" href="favicon.ico" type="image/x-icon">
+    <!-- Font Awesome 图标库 -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
+    <!-- particles.js 库 -->
+    <script src="particles.min.js"></script>
+    <script>
+        var _hmt = _hmt || [];
+        (function () {
+            var hm = document.createElement("script");
+            hm.src = "https://hm.baidu.com/hm.js?1db724a5835d5430cad3bdb6d63c5a47";
+            var s = document.getElementsByTagName("script")[0];
+            s.parentNode.insertBefore(hm, s);
+        })();
+    </script>
+
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            background-color: #1a1a2e;
+            color: #00e6e6;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            padding: 20px;
+            text-align: center;
+        }
+
+        h1 {
+            font-size: 2em;
+            margin: 20px 0;
+        }
+
+        input[type="text"],
+        select,
+        button {
+            background-color: #16213e;
+            border: 3px solid transparent;
+            /* 添加透明边框 */
+            border-radius: 5px;
+            color: #00e6e6;
+            padding: 15px 20px;
+            margin: 10px 0;
+            text-align: center;
+            /* 将文本对齐方式改为左对齐 */
+            box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.2);
+            /* 添加内阴影 */
+            transition: border-color 0.3s, box-shadow 0.3s;
+            /* 添加过渡效果 */
+            outline: none;
+            /* 删除聚焦时的默认轮廓 */
+        }
+
+        input[type="text"]::placeholder,
+        select::placeholder {
+            /* 改善占位符样式 */
+            color: rgba(0, 230, 230, 0.7);
+            /* 占位符字体颜色稍微透明 */
+            opacity: 1;
+            /* 确保占位符不会降低透明度 */
+        }
+
+        input[type="text"]:hover,
+        select:hover,
+        button:hover {
+            border-color: #00e6e6;
+            /* 悬停时改变边框颜色 */
+            box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.3);
+            /* 悬停时增强内阴影 */
+        }
+
+        input[type="text"]:focus,
+        select:focus {
+            border-color: #00e6e6;
+            /* 聚焦时改变边框颜色 */
+            box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.4);
+            /* 聚焦时增强内阴影 */
+        }
+
+
+        input[type="text"] {
+            width: 80%;
+            /* Adjusted width */
+            max-width: 500px;
+            /* Max width */
+        }
+
+        button {
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        button:hover {
+            background-color: #0f3460;
+        }
+
+        .column {
+            padding: 0 15px;
+        }
+
+        .row {
+            margin: 0 -5px;
+        }
+
+        .row:after {
+            content: "";
+            display: table;
+            clear: both;
+        }
+
+        a {
+            color: #00e6e6;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        a:hover {
+            color: #fff;
+        }
+
+        .footer {
+            margin-top: 20px;
+            color: #4ecca3;
+            font-size: 0.8em;
+        }
+
+        @media screen and (max-width: 600px) {
+            .column {
+                width: 100%;
+                display: block;
+                margin-bottom: 20px;
+            }
+        }
+
+        #particles-js {
+            position: fixed;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            z-index: -1;
+        }
+
+        .button-icon {
+            margin-right: 8px;
+        }
+
+        .rounded-rectangle {
+            background-color: rgba(255, 255, 255, 0.1);
+            border-radius: 15px;
+            padding: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            display: inline-block;
+            /* 改回 inline-block 允许内部使用默认的 block-level 布局 */
+        }
+
+        .profile-section {
+            margin: 40px 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .avatar {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            border: 3px solid #00e6e6;
+            box-shadow: 0 0 20px rgba(0, 230, 230, 0.3);
+            object-fit: cover;
+        }
+
+        .bio {
+            max-width: 600px;
+            padding: 20px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 15px;
+            line-height: 1.6;
+            font-size: 1.1em;
+            margin: 0 20px;
+        }
+
+        /* 调整原有标题样式 */
+        h1 {
+            font-size: 2.5em;
+            margin: 20px 0;
+            color: #4ecca3;
+            text-shadow: 0 0 10px rgba(78, 204, 163, 0.3);
+        }
+
+        /* 新增分类标题样式 */
+        .category-title {
+            font-size: 1.8em;
+            color: #4ecca3;
+            margin: 30px 0 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #00e6e6;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- 粒子动画背景容器 -->
+    <div id="particles-js"></div>
+    <br>
+    <!-- <h1>安全之眼引擎系统</h1> -->
+    <!-- 新增个人资料区 -->
+    <div class="profile-section">
+        <img src="./source/touxiang.jpg" alt="韩小鱼的头像" class="avatar">
+        <h1>韩小鱼的渗透笔记</h1>
+        <div class="bio">
+            <p>🛡️ 网络安全研究员 | 漏洞猎人 | CTF选手</p>
+            <p>🔭 专注Web安全、红队攻防、漏洞分析</p>
+            <p>📚 定期分享安全工具开发、实战案例和漏洞研究</p>
+            <p>📫 联系方式：hyuxin_2024 | 2799914424@qq.com</p>
+        </div>
+    </div>
+
+    <input id="target" name="target" placeholder="请输入目标域名" type="text" autofocus>
+    <br><br>
+    <div class="row">
+        <div class="column">
+
+            <!-- 搜索引擎 -->
+            <div class="rounded-rectangle">
+                <h4>搜索引擎</h4>
+
+                <!-- 在按钮中添加 Font Awesome 图标 -->
+                <button onclick="bt_baidu_search()"><i class="fas fa-search button-icon"></i>百度搜索</button>
+                <button onclick="bt_google_search()"><i class="fas fa-search button-icon"></i>谷歌搜索</button>
+                <button onclick="bt_github_search()"><i class="fas fa-search button-icon"></i>GitHub搜索</button>
+                <button onclick="bt_gitee_search()"><i class="fas fa-search button-icon"></i>Gitee搜索</button>
+                <br>
+                <button onclick="bt_google_vul()"><i class="fas fa-link button-icon"></i>Google搜漏洞关键字</button>
+                <button onclick="bt_baidu_vul()"><i class="fas fa-link button-icon"></i>BaiDu搜索漏洞关键字</button>
+
+            </div>
+
+            <br><br>
+            <!-- 资产测绘相关 -->
+            <div class="rounded-rectangle">
+                <h4>资产测绘 | 企业查询</h4>
+                <button onclick="bt_zoomeye()"><i class="fas fa-link button-icon"></i>ZoomEye搜索域名资产</button>
+                <button onclick="bt_censys()"><i class="fas fa-link button-icon"></i>Censys搜索域名资产</button>
+                <button onclick="bt_quake()"><i class="fas fa-link button-icon"></i>360quake搜索域名资产</button>
+                <br />
+                <button onclick="bt_tianyancha()"><i class="fas fa-search button-icon"></i>天眼查企业</button>
+                <button onclick="bt_qichacha()"><i class="fas fa-search button-icon"></i>企查查企业</button>
+            </div>
+
+            <br><br>
+            <!-- 网络安全工具相关 -->
+            <div class="rounded-rectangle">
+                <h4>常用工具</h4>
+                <button>
+                    <a href="http://chat.littlewheat.com/" target="_blank">
+                        <i class="fas fa-link button-icon"></i>1Chat.vin
+                    </a>
+                </button>
+                <button>
+                    <a href="https://codenews.cc/chatgpt" target="_blank">
+                        <i class="fas fa-link button-icon"></i>chatgpt中文版
+                    </a>
+                </button>
+                <br>
+                <button>
+                    <a href="https://hello-ctf.com/hc-toolkit/" target="_blank">
+                        <i class="fas fa-link button-icon"></i>HelloCTF
+                    </a>
+                </button>
+                <button>
+                    <a href="https://ctf.bugku.com/tools.html" target="_blank">
+                        <i class="fas fa-link button-icon"></i>Bugku
+                    </a>
+                </button>
+                <button>
+                    <a href="https://www.lddgo.net/index" target="_blank">
+                        <i class="fas fa-link button-icon"></i>lddgo工具大全
+                    </a>
+                </button>
+                <button>
+                    <a href="http://www.hiencode.com/" target="_blank">
+                        <i class="fas fa-link button-icon"></i>CTF解题工具
+                    </a>
+                </button>
+                <br>
+                <button>
+                    <a href="https://www.chacuo.net/filehead" target="_blank">
+                        <i class="fas fa-link button-icon"></i>Hex文件头
+                    </a>
+                </button>
+                <button>
+                    <a href="https://www.cmd5.com/" target="_blank">
+                        <i class="fas fa-link button-icon"></i>MD5解密
+                    </a>
+                </button>
+
+                <button>
+                    <a href="https://www.splitbrain.org/services/ook" target="_blank">
+                        <i class="fas fa-link button-icon"></i>Brainfuck
+                    </a>
+                </button>
+                <button>
+                    <a href="https://cyberchef.org/" target="_blank">
+                        <i class="fas fa-link button-icon"></i>CyberChef
+                    </a>
+                </button>
+                <button>
+                    <a href="https://factordb.com/" target="_blank">
+                        <i class="fas fa-link button-icon"></i>RSA因式分解
+                    </a>
+                </button>
+            </div>
+
+            <br><br>
+            <!-- 渗透练习平台 -->
+            <div class="rounded-rectangle">
+                <h4>渗透练习平台</h4>
+                <button>
+                    <a href="http://redtiger.labs.overthewire.org/" target="_blank">
+                        <i class="fas fa-link button-icon"></i> SQL注入
+                    </a>
+                </button>
+                <button>
+                    <a href="https://prompt.ml/0" target="_blank">
+                        <i class="fas fa-link button-icon"></i> XSS注入游戏
+                    </a>
+                </button>
+                <button>
+                    <a href="https://xss-quiz.int21h.jp/" target="_blank">
+                        <i class="fas fa-link button-icon"></i> XSS挑战赛
+                    </a>
+                </button>
+
+
+            </div>
+
+            <br><br>
+            <!-- 学习教程 -->
+            <div class="rounded-rectangle">
+                <h4>学习教程</h4>
+                <button>
+                    <a href="https://blog.csdn.net/ytt0523_com/article/details/133179220" target="_blank">
+                        <i class="fas fa-link button-icon"></i> CTF学习路线
+                    </a>
+                </button>
+                <button>
+                    <a href="https://www.cnblogs.com/miraclewolf/p/17588567.html" target="_blank">
+                        <i class="fas fa-link button-icon"></i> CTF-MISC
+                    </a>
+                </button>
+                <button>
+                    <a href="https://shouce.jb51.net/kali-linux-tutorial/1.html" target="_blank">
+                        <i class="fas fa-link button-icon"></i> Kali Linux教程
+                    </a>
+                </button>
+
+                <br>
+                <button>
+                    <a href="https://www.processon.com/view/link/6375ee501e085317c6352894" target="_blank">
+                        <i class="fas fa-link button-icon"></i>网安工程师路线
+                    </a>
+                </button>
+                <button>
+                    <a href="https://www.processon.com/view/link/62b1b2267d9c08073c671315" target="_blank">
+                        <i class="fas fa-link button-icon"></i>网安零基础路线
+                    </a>
+                </button>
+                <br>
+                <button>
+                    <a href="https://blog.csdn.net/qq_53460654/article/details/116162207" target="_blank">
+                        <i class="fas fa-link button-icon"></i>极客大挑战2019_writeup
+                    </a>
+                </button>
+            </div>
+
+            <br><br>
+            <!-- 资源 -->
+            <div class="rounded-rectangle">
+                <h4>资源</h4>
+                <button>
+                    <a href="https://thuvien.org/navnav/" target="_blank">
+                        <i class="fas fa-link button-icon"></i>CSS效果
+                    </a>
+                </button>
+                <button>
+                    <a href="https://neumorphism.io/#e0e0e0" target="_blank">
+                        <i class="fas fa-link button-icon"></i>CSS阴影生成器
+                    </a>
+                </button>
+                <button>
+                    <a href="https://glassgenerator.netlify.app/" target="_blank">
+                        <i class="fas fa-link button-icon"></i>CSS高斯模糊
+                    </a>
+                </button>
+                <button>
+                    <a href="https://webgradients.com/" target="_blank">
+                        <i class="fas fa-link button-icon"></i>CSS渐变
+                    </a>
+                </button>
+                <br>
+                <button>
+                    <a href="https://get-shell.com/" target="_blank">
+                        <i class="fas fa-link button-icon"></i>极核Getshell
+                    </a>
+                </button>
+                <button>
+                    <a href="https://www.shentoushi.top/" target="_blank">
+                        <i class="fas fa-link button-icon"></i>渗透师
+                    </a>
+                </button>
+                <button>
+                    <a href="https://forum.ywhack.com/bountytips.php" target="_blank">
+                        <i class="fas fa-link button-icon"></i>棱角社区
+                    </a>
+                </button>
+                <br>
+                <button>
+                    <a href="https://www.giffox.com/" target="_blank">
+                        <i class="fas fa-link button-icon"></i>电子书
+                    </a>
+                </button>
+                <button>
+                    <a href="https://www.lanzoui.com/b573017" target="_blank">
+                        <i class="fas fa-link button-icon"></i>微软常用运行库合集包
+                    </a>
+                </button>
+                <button>
+                    <a href="https://massgrave.dev/" target="_blank">
+                        <i class="fas fa-link button-icon"></i>Win激活
+                    </a>
+                </button>
+                <button>
+                    <a href="https://hellowindows.cn/" target="_blank">
+                        <i class="fas fa-link button-icon"></i>Win下载站
+                    </a>
+                </button>
+                <button>
+                    <a href="https://www.fenxm.com/system" target="_blank">
+                        <i class="fas fa-link button-icon"></i>Win二改下载站
+                    </a>
+                </button>
+
+            </div>
+
+        </div>
+    </div>
+    <div class="footer">Hyunxin © 2024 | Github托管 </div>
+    <script>
+        // 按下回车键自动进行百度搜索
+        document.getElementById("target").addEventListener('keypress', function (event) {
+            if (event.keyCode == 13) {
+                bt_baidu_search();
+                event.preventDefault();
+            }
+        });
+
+        function checkInput() {
+            var inputValue = document.getElementById("target").value;
+            if (!inputValue) {
+                alert("搜索框不能为空");
+                return false; // 返回false，表示输入无效
+            }
+            return true; // 返回true，表示输入有效
+        }
+
+        // 基本搜索引擎
+
+        function bt_baidu_search(option) {
+            if (!checkInput()) return;
+            var target = document.getElementById("target").value;
+            var url = "https://www.baidu.com/s?wd=" + target;
+            window.open(url);
+
+        }
+        function bt_google_search(option) {
+            if (!checkInput()) return;
+            var target = document.getElementById("target").value;
+            var url = "https://www.google.com/search?q=" + target;
+            window.open(url);
+        }
+
+        function bt_github_search(option) {
+            if (!checkInput()) return;
+            var target = document.getElementById("target").value;
+            var url = "https://github.com/search?q=" + target;
+            window.open(url);
+        }
+
+        function bt_gitee_search(option) {
+            if (!checkInput()) return;
+            var target = document.getElementById("target").value;
+            var url = "https://search.gitee.com/?skin=rec&type=repository&q=" + target;
+            window.open(url);
+        }
+        function bt_baidu(option) {
+            if (!checkInput()) return;
+            var target = document.getElementById("target").value;
+            var target = target.replace("http://", "");
+            var target = target.replace("https://", "");
+            var target = target.split("/")[0];
+            var url = "https://www.baidu.com/s?wd=" + "\"" + target + "\"";
+            window.open(url);
+        }
+
+        function bt_google(option) {
+            if (!checkInput()) return;
+            var target = document.getElementById("target").value;
+            var target = target.replace("http://", "");
+            var target = target.replace("https://", "");
+            var target = target.split("/")[0];
+            var url = "https://www.google.com/search?q=" + "site:" + target;
+            window.open(url);
+        }
+
+        function bt_google_vul(option) {
+            if (!checkInput()) return;
+            var target = document.getElementById("target").value;
+            var url = "https://www.google.com/search?q=" + target + '+"漏洞" +"复现" +"CVE" +"CNVD" +"安全"';
+            window.open(url);
+        }
+        function bt_baidu_vul(option) {
+            if (!checkInput()) return;
+            var target = document.getElementById("target").value;
+            var url = "https://www.baidu.com/s?wd=" + target + '+"漏洞"+"复现"+"CVE"+"CNVD"+"安全"';
+            window.open(url);
+
+        }
+
+
+
+        function bt_bing(option) {
+            if (!checkInput()) return;
+            var target = document.getElementById("target").value;
+            var target = target.replace("http://", "");
+            var target = target.replace("https://", "");
+            var target = target.split("/")[0];
+            var url = "https://cn.bing.com/search?q=" + "site:" + target;
+            window.open(url);
+        }
+
+        function bt_tianyancha(option) {
+            if (!checkInput()) return;
+            var target = document.getElementById("target").value;
+            var url = "https://www.tianyancha.com/nsearch?key=" + target;
+            window.open(url);
+        }
+        function bt_aiqicha(option) {
+            if (!checkInput()) return;
+            var target = document.getElementById("target").value;
+            var url = "https://aiqicha.baidu.com/login?u=https://aiqicha.baidu.com/s?q=" + target + "&t=0";
+            window.open(url);
+        }
+        function bt_qichacha(option) {
+            if (!checkInput()) return;
+            var target = document.getElementById("target").value;
+            var url = "https://www.qcc.com/web/search?key=" + target;
+            window.open(url);
+        }
+
+
+
+        // 资产测绘引擎
+
+        function bt_fofa(option) {
+            if (!checkInput()) return;
+            var target = document.getElementById("target").value;
+            var target = target.replace("http://", "");
+            var target = target.replace("https://", "");
+            var target = target.split("/")[0];
+            var target = target.split(".");
+            var target = target[target.length - 2] + "." + target[target.length - 1];
+            var target = "host=" + "\"" + target + "\"";
+            target = btoa(target);
+            console.log(target)
+            var url = "https://fofa.info/result?qbase64=" + target;
+            window.open(url);
+        }
+        function bt_quake(option) {
+            if (!checkInput()) return;
+            var target = document.getElementById("target").value;
+            var target = target.replace("http://", "");
+            var target = target.replace("https://", "");
+            var target = target.split("/")[0];
+            var target = target.split(".");
+            var target = target[target.length - 2] + "." + target[target.length - 1];
+
+            var url = "https://quake.360.net/quake/#/searchResult?searchVal=domain%3D%22" + target + "%22&selectIndex=quake_service&latest=true";
+            window.open(url);
+        }
+
+        function bt_zoomeye(option) {
+            if (!checkInput()) return;
+            var target = document.getElementById("target").value;
+            var target = target.replace("http://", "");
+            var target = target.replace("https://", "");
+            var target = target.split("/")[0];
+            var target = target.split(".");
+            var target = target[target.length - 2] + "." + target[target.length - 1];
+            var target = "site:" + target;
+
+            var url = "https://www.zoomeye.org/searchResult?q=" + target;
+            window.open(url);
+        }
+
+        function bt_hunter(option) {
+            if (!checkInput()) return;
+            var target = document.getElementById("target").value;
+            var target = target.replace("http://", "");
+            var target = target.replace("https://", "");
+            var target = target.split("/")[0];
+            var target = target.split(".");
+            var target = target[target.length - 2] + "." + target[target.length - 1];
+            var target = "domain=" + "\"" + target + "\"";
+            target = btoa(target);
+            var url = "https://hunter.qianxin.com/list?search=" + target + "&conditions=";
+            window.open(url);
+        }
+
+        // 粒子动画初始化脚本
+        particlesJS('particles-js', {
+            particles: {
+                number: {
+                    value: 80,
+                    density: {
+                        enable: true,
+                        value_area: 800
+                    }
+                },
+                color: {
+                    value: '#00e6e6'
+                },
+                shape: {
+                    type: 'circle',
+                    stroke: {
+                        width: 0,
+                        color: '#000000'
+                    },
+                    polygon: {
+                        nb_sides: 5
+                    },
+                    image: {
+                        src: 'img/github.svg',
+                        width: 100,
+                        height: 100
+                    }
+                },
+                opacity: {
+                    value: 0.5,
+                    random: false,
+                    anim: {
+                        enable: false,
+                        speed: 1,
+                        opacity_min: 0.1,
+                        sync: false
+                    }
+                },
+                size: {
+                    value: 3,
+                    random: true,
+                    anim: {
+                        enable: false,
+                        speed: 40,
+                        size_min: 0.1,
+                        sync: false
+                    }
+                },
+                line_linked: {
+                    enable: true,
+                    distance: 150,
+                    color: '#00e6e6',
+                    opacity: 0.4,
+                    width: 1
+                },
+                move: {
+                    enable: true,
+                    speed: 6,
+                    direction: 'none',
+                    random: false,
+                    straight: false,
+                    out_mode: 'out',
+                    bounce: false,
+                    attract: {
+                        enable: false,
+                        rotateX: 600,
+                        rotateY: 1200
+                    }
+                }
+            },
+            interactivity: {
+                detect_on: 'canvas',
+                events: {
+                    onhover: {
+                        enable: true,
+                        mode: 'repulse'
+                    },
+                    onclick: {
+                        enable: true,
+                        mode: 'push'
+                    },
+                    resize: true
+                },
+                modes: {
+                    grab: {
+                        distance: 400,
+                        line_linked: {
+                            opacity: 1
+                        }
+                    },
+                    bubble: {
+                        distance: 400,
+                        size: 40,
+                        duration: 2,
+                        opacity: 8,
+                        speed: 3
+                    },
+                    repulse: {
+                        distance: 200,
+                        duration: 0.4
+                    },
+                    push: {
+                        particles_nb: 4
+                    },
+                    remove: {
+                        particles_nb: 2
+                    }
+                }
+            },
+            retina_detect: true
+        });
+    </script>
+</body>
+
+</html>
